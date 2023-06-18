@@ -2,7 +2,13 @@ pipeline {
     agent any
 
     stages {
-        stage('Run Shell Script') {
+        stage('Grant Execute Permission') {
+            steps {
+                sh 'chmod +x deployment.sh'
+            }
+        }
+
+        stage('Execute Deployment Script') {
             steps {
                 sh './deployment.sh'
             }
